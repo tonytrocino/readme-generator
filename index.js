@@ -37,8 +37,8 @@ const questions = [
   },
   {
     type: "input",
-    name: "clone",
-    message: "Repo Clone Link:",
+    name: "repo",
+    message: "Repository Name:",
   },
   {
     type: "list",
@@ -57,12 +57,12 @@ const questions = [
   {
     type: "input",
     name: "test",
-    message: "Please enter any testing protocols you used for your project?",
+    message: "Testing Protocols:",
   },
   {
     type: "input",
     name: "author",
-    message: "Your Name:",
+    message: "Author Name:",
   },
   {
     type: "input",
@@ -71,24 +71,14 @@ const questions = [
   },
   {
     type: "input",
-    name: "userEmail",
+    name: "email",
     message: "Email:",
-  },
-  {
-    type: "input",
-    name: "URL",
-    message: "Deployment URL:",
-  },
-  {
-    type: "input",
-    name: "repo",
-    message: "GitHub Repo URL:",
   },
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, JSON.stringify(data), (err) => err && console.error(err));
+  fs.writeFile(fileName, data, (err) => err && console.error(err));
 }
 
 // TODO: Create a function to initialize app
