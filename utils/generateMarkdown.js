@@ -56,7 +56,7 @@ function generateMarkdown(data) {
   return `# ${data.title}
 
 ## Description
-  ${data.description}
+- ${data.description}
   
 ---
 
@@ -72,19 +72,19 @@ function generateMarkdown(data) {
 
 ## Installation
 ${data.installation}
-Git Repository [https://github.com/${data.userName}/${data.repo}]
+- Git Repository [https://github.com/${data.userName}/${data.repo}]
 
 ## Usage
-${data.usage}
+- ${data.usage}
 
 ##License 
-${renderLicenseSection(data.license)}
+- ${renderLicenseSection(data.license)}
 
 ## Contributing
-${data.contribution}
+- ${data.contribution}
 
 ## Tests
-${data.test}
+- ${data.test}
 
 ## Questions
 - Git - [${data.userName}](https://github.com/${data.userName})
