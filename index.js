@@ -1,7 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const util = require("util");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
@@ -18,23 +17,33 @@ const questions = [
   },
   {
     type: "input",
-    name: "about",
-    message: "Please tell us about your project:",
+    name: "installation",
+    message: "Installation Instructions:",
   },
   {
     type: "input",
-    name: "installation",
-    message: "What are the installation instructions?",
+    name: "usage",
+    message: "Usage Information:",
+  },
+  {
+    type: "input", 
+    name: "contribution",
+    message: "Contribution Guidelines:"
+  },
+  {
+    type: "input", 
+    name: "testing",
+    message: "Test Instructions:"
   },
   {
     type: "input",
     name: "clone",
-    message: "What is the link to clone the repo?",
+    message: "Repo Clone Link:",
   },
   {
     type: "list",
     name: "license",
-    message: "Please choose the license you used for this project.",
+    message: "License:",
     choices: [
       "MIT",
       "Mozilla",
@@ -53,35 +62,44 @@ const questions = [
   {
     type: "input",
     name: "author",
-    message: "What is your name?",
+    message: "Your Name:",
   },
   {
     type: "input",
     name: "userName",
-    message: "What is your GitHub username?",
+    message: "GitHub Username:",
   },
   {
     type: "input",
     name: "userEmail",
-    message: "What is your email?",
+    message: "Email:",
   },
   {
     type: "input",
     name: "URL",
-    message: "What is the URL of the live site?",
+    message: "Deployment URL:",
   },
   {
     type: "input",
     name: "repo",
-    message: "What is the URL of the github repo?",
+    message: "GitHub Repo URL:",
   },
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, JSON.stringify(data), (err) => err && console.error(err));
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+async function init() {
+    console.log("README GENERATOR");
+    console.log("----------------");
+    const answers = await inquirer.prompt(questions);
+    let data = generateMarkdown(answers);
+    writeToFile("my-readme.md", data);
+    console.log("my-readme.md written to disk");
+}
 
 // Function call to initialize app
 init();
